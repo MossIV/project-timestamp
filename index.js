@@ -24,7 +24,22 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+//A GET endpoint for date that returns a unix key and a utc key
+app.get("/api/:date", function (req, res){
+  var dateParam = req.params.date;
 
+  var dateObject = Date.parse(dateParam)
+  var unixDate = dateObject
+  var utcDate = new Date(dateObject).toString()
+  console.log(unixDate)
+  console.log(utcDate)
+  
+  res.json({
+    unix: unixDate,
+    utc: utcDate
+  })
+    
+})
 
 // Listen on port set in environment variable or default to 3000
 var listener = app.listen(process.env.PORT || 3000, function () {
