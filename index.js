@@ -28,12 +28,24 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/:date", function (req, res){
   var dateParam = req.params.date;
 
-  var dateObject = Date.parse(dateParam)
-  var unixDate = dateObject
-  var utcDate = new Date(dateObject).toString()
+
+  dateInt = Number(dateParam)
+  if(isNaN(dateInt)){
+    var dateObject = Date.parse(dateParam)
+    var unixDate = dateObject
+    var utcDate = new Date(dateObject).toString()
+  }else{
+    var unixDate = dateInt
+    var utcDate = new Date(dateInt).toString()
+
+  }
+
+
+
+  
   console.log(unixDate)
   console.log(utcDate)
-  
+
   res.json({
     unix: unixDate,
     utc: utcDate
