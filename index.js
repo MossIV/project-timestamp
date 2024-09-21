@@ -39,7 +39,7 @@ app.get("/api/:date", function (req, res){
       })
     }else{
       var unixDate = dateObject
-      var utcDate = new Date(dateObject).toString()
+      var utcDate = new Date(dateObject).toUTCString()
       res.json({
         unix: unixDate,
         utc: utcDate
@@ -49,7 +49,7 @@ app.get("/api/:date", function (req, res){
   }else{
     console.log("a")
     var unixDate = dateInt
-    var utcDate = new Date(dateInt).toString()
+    var utcDate = new Date(dateInt).toUTCString()
 
     res.json({
       unix: unixDate,
