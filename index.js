@@ -31,25 +31,39 @@ app.get("/api/:date", function (req, res){
 
   dateInt = Number(dateParam)
   if(isNaN(dateInt)){
+    console.log("b")
     var dateObject = Date.parse(dateParam)
-    var unixDate = dateObject
-    var utcDate = new Date(dateObject).toString()
+    if(isNaN(dateObject)){
+      res.json({
+        error: "Invalid Date"
+      })
+    }else{
+      var unixDate = dateObject
+      var utcDate = new Date(dateObject).toString()
+      res.json({
+        unix: unixDate,
+        utc: utcDate
+      })
+    }
+    
   }else{
+    console.log("a")
     var unixDate = dateInt
     var utcDate = new Date(dateInt).toString()
 
+    res.json({
+      unix: unixDate,
+      utc: utcDate
+    })
   }
 
 
 
   
-  console.log(unixDate)
-  console.log(utcDate)
+  // console.log(unixDate)
+  // console.log(utcDate)
 
-  res.json({
-    unix: unixDate,
-    utc: utcDate
-  })
+  
     
 })
 
