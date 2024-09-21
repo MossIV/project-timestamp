@@ -30,7 +30,6 @@ app.get("/api/:date", function (req, res){
 
   dateInt = Number(dateParam)
   if(isNaN(dateInt)){
-    console.log("b")
     var dateObject = Date.parse(dateParam)
     if(isNaN(dateObject)){
       res.json({
@@ -46,7 +45,6 @@ app.get("/api/:date", function (req, res){
     }
     
   }else{
-    console.log("a")
     var unixDate = dateInt
     var utcDate = new Date(dateInt).toUTCString()
 
@@ -59,7 +57,6 @@ app.get("/api/:date", function (req, res){
 
 app.get("/api/",function(req,res){
   var date = Date()
-  console.log(date)
   var unixDate = Date.parse(date);
   var utcDate = new Date(date).toUTCString()
   
